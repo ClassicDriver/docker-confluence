@@ -1,0 +1,14 @@
+data:
+  build: data
+  volumes:
+    - ./datavolume:/var/confluence_home
+db:
+  build: postgres
+web:
+  build: web
+  ports:
+    - "8890:8090"
+  volumes_from:
+    - data
+  links:
+    - db:db

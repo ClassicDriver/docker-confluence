@@ -1,0 +1,14 @@
+data:
+  image: classicdriver/confluence-data
+  volumes:
+    - /data/docker/volumes/atlassian/confluence:/var/confluence_home
+db:
+  image: classicdriver/confluence-postgres
+web:
+  image: classicdriver/confluence:5.9.1
+  ports:
+    - '8890:8090'
+  volumes_from:
+    - data
+  links:
+    - db:db
